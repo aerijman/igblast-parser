@@ -21,13 +21,13 @@ setup(
 	description = "Parser of Igblast results into a csv file",
 	long_description = long_description,
 	long_description_content_type = "text/markdown",
-	url = "...",
+	url = "https://github.com/aerijman/igblast-parser",
 	packages = find_packages(),
-	classifiers = [
-		"Programming language ::  Python :: 3",
-		"Licence :: OSI approved :: MIT Licence",
-		"Operating system :: OS Independent",
-	],
+	#classifiers = [
+	#	"Programming language ::  Python :: 3",
+	#	"Licence :: OSI approved :: MIT Licence",
+	#	"Operating system :: OS Independent",
+	#],
 	python_requires='>=3.6',
 	install_requires = ['pandas', 'numpy'],
 	
