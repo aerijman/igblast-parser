@@ -3,7 +3,7 @@
 import sys,re
 import pickle
 import pandas as pd
-from module1 import igblast_parse
+from igblast_parser.module1 import igblast_parse
 
 
 from signal import signal, SIGPIPE, SIG_DFL
