@@ -44,7 +44,7 @@ cpdef dict parse_header(str line):
     return  results
 
 
-def igblast_parse(fin,out_prefix):
+def igblast_parse(fin):
     # results table
     cdef dict d
     d={}

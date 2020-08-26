@@ -9,12 +9,38 @@ This simple script parses igblast output into a csv formatted table, easy to und
 
 ### Installation
 
-pip
-conda
+pip install igblast-parser
+conda install -c bioconda igblast-parser
 
+python setup.py install
 
 ### Usage
 
 docs
+
+While docs are not ready:
+
+Command line executable in unix-like systems:
+```bash
+	cat igblast.output | igblast-parser
+``` 
+Pipe is not obligatory as the input could be specified with the argument `--in`   
+
+optional argument: `--out` to specify the prefix of the output csv file   
+```bash
+	igblast-parser --in igblast.output --out parser.output
+```
+
+In interactive python or script
+```python
+	f_in = open('igblast.output','r')
+
+	# dictionary with UMI as primary key and multiple keys/UMI
+	d = igblast_parse(f)
+
+	# pandas provides very nice tables
+ 	import pandas
+	df = pandas.DataFrame(d).T
+```
 
 
