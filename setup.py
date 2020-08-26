@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
-from Cython.Build import cythonize
+#from Cython.Build import cythonize
+from distutils.extension import Extension
 
 with open("README.md","r") as fh:
 	long_description = fh.read()
@@ -7,11 +8,16 @@ with open("README.md","r") as fh:
 try:
     from Cython.Distutils import build_ext
 except ImportError:
-	ext_modules = ''
+	ext_modules = [
+        Extension("igblast_parser.module1", ["compiled/module1.c"]),
+    ]
 	cmdclass = {}
 else:
-	ext_modules = cythonize("compiled/module1.pyx")
+	#ext_modules = cythonize("compiled/module1.pyx")
 	cmdclass = {'build_ext': build_ext}
+	ext_modules = [
+        Extension("igblast_parser.module1", ["compiled/module1.pyx"]),
+    ]
 
 setup(
 	name = "igblast_parser",
