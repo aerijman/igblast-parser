@@ -10,7 +10,7 @@ except ImportError:
 	ext_modules = ''
 	cmdclass = {}
 else:
-	ext_modules = cythonize("cython/module1.pyx")
+	ext_modules = cythonize("compiled/module1.pyx")
 	cmdclass = {'build_ext': build_ext}
 
 setup(

@@ -5,7 +5,7 @@
     "distutils": {
         "name": "module1",
         "sources": [
-            "cython/module1.pyx"
+            "compiled/module1.pyx"
         ]
     },
     "module_name": "module1"
@@ -825,7 +825,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "cython/module1.pyx",
+  "compiled/module1.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -1479,7 +1479,6 @@ static const char __pyx_k_cdr3_flag[] = "cdr3_flag";
 static const char __pyx_k_cdr3start[] = "cdr3start";
 static const char __pyx_k_Chain_type[] = "Chain type";
 static const char __pyx_k_Productive[] = "Productive";
-static const char __pyx_k_out_prefix[] = "out_prefix";
 static const char __pyx_k_stop_codon[] = "stop codon";
 static const char __pyx_k_header_flag[] = "header_flag";
 static const char __pyx_k_D_J_junction[] = "D-J junction";
@@ -1497,10 +1496,10 @@ static const char __pyx_k_Top_J_gene_match[] = "Top J gene match";
 static const char __pyx_k_Top_V_gene_match[] = "Top V gene match";
 static const char __pyx_k_Alignment_summary[] = "Alignment summary";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_cython_module1_pyx[] = "cython/module1.pyx";
 static const char __pyx_k_rearrangement_flag[] = "rearrangement_flag";
 static const char __pyx_k_Sub_region_sequence[] = "Sub-region sequence";
 static const char __pyx_k_V_D_J_rearrangement[] = "V-(D)-J rearrangement";
+static const char __pyx_k_compiled_module1_pyx[] = "compiled/module1.pyx";
 static const char __pyx_k_not_flanked_by_C_and_F_in[] = "{} not flanked by C and F in {}";
 static const char __pyx_k_igblast_parse_locals_lambda[] = "igblast_parse.<locals>.<lambda>";
 static const char __pyx_k_UMI_is_repeated_stick_with_the_f[] = "UMI={} is repeated. stick with the first one found in the data\n";
@@ -1557,9 +1556,9 @@ static PyObject *__pyx_n_s_cdr3start;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_close;
 static PyObject *__pyx_n_s_column_names;
+static PyObject *__pyx_kp_s_compiled_module1_pyx;
 static PyObject *__pyx_n_s_conserved_cfw;
 static PyObject *__pyx_n_s_contignt;
-static PyObject *__pyx_kp_s_cython_module1_pyx;
 static PyObject *__pyx_n_s_d;
 static PyObject *__pyx_n_s_e;
 static PyObject *__pyx_n_s_e_value;
@@ -1586,7 +1585,6 @@ static PyObject *__pyx_kp_s_matches;
 static PyObject *__pyx_n_s_module1;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_s_not_flanked_by_C_and_F_in;
-static PyObject *__pyx_n_s_out_prefix;
 static PyObject *__pyx_n_s_pandas;
 static PyObject *__pyx_n_s_pd;
 static PyObject *__pyx_n_s_pickle;
@@ -1614,7 +1612,7 @@ static PyObject *__pyx_pf_7module1_check_flanking_cdr3(CYTHON_UNUSED PyObject *_
 static PyObject *__pyx_pf_7module1_2parse_header(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_line); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
-static PyObject *__pyx_pf_7module1_4igblast_parse(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_fin, PyObject *__pyx_v_out_prefix); /* proto */
+static PyObject *__pyx_pf_7module1_4igblast_parse(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_fin); /* proto */
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_items = {0, &__pyx_n_s_items, 0, 0, 0};
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop = {0, &__pyx_n_s_pop, 0, 0, 0};
 static __Pyx_CachedCFunction __pyx_umethod_PyString_Type_strip = {0, &__pyx_n_s_strip, 0, 0, 0};
@@ -2619,70 +2617,19 @@ static PyObject *__pyx_pf_7module1_2parse_header(CYTHON_UNUSED PyObject *__pyx_s
 /* "module1.pyx":47
  * 
  * 
- * def igblast_parse(fin,out_prefix):             # <<<<<<<<<<<<<<
+ * def igblast_parse(fin):             # <<<<<<<<<<<<<<
  *     # results table
  *     cdef dict d
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7module1_5igblast_parse(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7module1_5igblast_parse = {"igblast_parse", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7module1_5igblast_parse, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7module1_5igblast_parse(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_fin = 0;
-  PyObject *__pyx_v_out_prefix = 0;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
+static PyObject *__pyx_pw_7module1_5igblast_parse(PyObject *__pyx_self, PyObject *__pyx_v_fin); /*proto*/
+static PyMethodDef __pyx_mdef_7module1_5igblast_parse = {"igblast_parse", (PyCFunction)__pyx_pw_7module1_5igblast_parse, METH_O, 0};
+static PyObject *__pyx_pw_7module1_5igblast_parse(PyObject *__pyx_self, PyObject *__pyx_v_fin) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("igblast_parse (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_fin,&__pyx_n_s_out_prefix,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_fin)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_out_prefix)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("igblast_parse", 1, 2, 2, 1); __PYX_ERR(0, 47, __pyx_L3_error)
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "igblast_parse") < 0)) __PYX_ERR(0, 47, __pyx_L3_error)
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_fin = values[0];
-    __pyx_v_out_prefix = values[1];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("igblast_parse", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 47, __pyx_L3_error)
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("module1.igblast_parse", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7module1_4igblast_parse(__pyx_self, __pyx_v_fin, __pyx_v_out_prefix);
+  __pyx_r = __pyx_pf_7module1_4igblast_parse(__pyx_self, ((PyObject *)__pyx_v_fin));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
@@ -2850,12 +2797,12 @@ static PyObject *__pyx_lambda_funcdef_lambda1(CYTHON_UNUSED PyObject *__pyx_self
 /* "module1.pyx":47
  * 
  * 
- * def igblast_parse(fin,out_prefix):             # <<<<<<<<<<<<<<
+ * def igblast_parse(fin):             # <<<<<<<<<<<<<<
  *     # results table
  *     cdef dict d
  */
 
-static PyObject *__pyx_pf_7module1_4igblast_parse(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_fin, PyObject *__pyx_v_out_prefix) {
+static PyObject *__pyx_pf_7module1_4igblast_parse(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_fin) {
   PyObject *__pyx_v_d = 0;
   PyObject *__pyx_v_column_names = 0;
   int __pyx_v_rearrangement_flag;
@@ -3249,7 +3196,7 @@ static PyObject *__pyx_pf_7module1_4igblast_parse(CYTHON_UNUSED PyObject *__pyx_
  *                     if 'cdr3' not in d[Umi].keys() or 'contignt' not in d[Umi].keys():
  *                         d[Umi]['conserved_cfw'] = False
  */
-          __pyx_t_7 = __Pyx_PyDict_NewPresized(21); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 79, __pyx_L8_error)
+          __pyx_t_7 = __Pyx_PyDict_NewPresized(20); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 79, __pyx_L8_error)
           __Pyx_GOTREF(__pyx_t_7);
           __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_E_flag); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 79, __pyx_L8_error)
           __Pyx_GOTREF(__pyx_t_8);
@@ -3307,9 +3254,6 @@ static PyObject *__pyx_pf_7module1_4igblast_parse(CYTHON_UNUSED PyObject *__pyx_
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           if (__pyx_v_line) {
             if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_line, __pyx_v_line) < 0) __PYX_ERR(0, 79, __pyx_L8_error)
-          }
-          if (__pyx_v_out_prefix) {
-            if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_out_prefix, __pyx_v_out_prefix) < 0) __PYX_ERR(0, 79, __pyx_L8_error)
           }
           __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_rearrangement_flag); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 79, __pyx_L8_error)
           __Pyx_GOTREF(__pyx_t_8);
@@ -5510,7 +5454,7 @@ static PyObject *__pyx_pf_7module1_4igblast_parse(CYTHON_UNUSED PyObject *__pyx_
   /* "module1.pyx":47
  * 
  * 
- * def igblast_parse(fin,out_prefix):             # <<<<<<<<<<<<<<
+ * def igblast_parse(fin):             # <<<<<<<<<<<<<<
  *     # results table
  *     cdef dict d
  */
@@ -5651,9 +5595,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
   {&__pyx_n_s_column_names, __pyx_k_column_names, sizeof(__pyx_k_column_names), 0, 0, 1, 1},
+  {&__pyx_kp_s_compiled_module1_pyx, __pyx_k_compiled_module1_pyx, sizeof(__pyx_k_compiled_module1_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_conserved_cfw, __pyx_k_conserved_cfw, sizeof(__pyx_k_conserved_cfw), 0, 0, 1, 1},
   {&__pyx_n_s_contignt, __pyx_k_contignt, sizeof(__pyx_k_contignt), 0, 0, 1, 1},
-  {&__pyx_kp_s_cython_module1_pyx, __pyx_k_cython_module1_pyx, sizeof(__pyx_k_cython_module1_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_d, __pyx_k_d, sizeof(__pyx_k_d), 0, 0, 1, 1},
   {&__pyx_n_s_e, __pyx_k_e, sizeof(__pyx_k_e), 0, 0, 1, 1},
   {&__pyx_n_s_e_value, __pyx_k_e_value, sizeof(__pyx_k_e_value), 0, 0, 1, 1},
@@ -5680,7 +5624,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_module1, __pyx_k_module1, sizeof(__pyx_k_module1), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_s_not_flanked_by_C_and_F_in, __pyx_k_not_flanked_by_C_and_F_in, sizeof(__pyx_k_not_flanked_by_C_and_F_in), 0, 0, 1, 0},
-  {&__pyx_n_s_out_prefix, __pyx_k_out_prefix, sizeof(__pyx_k_out_prefix), 0, 0, 1, 1},
   {&__pyx_n_s_pandas, __pyx_k_pandas, sizeof(__pyx_k_pandas), 0, 0, 1, 1},
   {&__pyx_n_s_pd, __pyx_k_pd, sizeof(__pyx_k_pd), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
@@ -5769,14 +5712,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "module1.pyx":47
  * 
  * 
- * def igblast_parse(fin,out_prefix):             # <<<<<<<<<<<<<<
+ * def igblast_parse(fin):             # <<<<<<<<<<<<<<
  *     # results table
  *     cdef dict d
  */
-  __pyx_tuple__15 = PyTuple_Pack(22, __pyx_n_s_fin, __pyx_n_s_out_prefix, __pyx_n_s_d, __pyx_n_s_column_names, __pyx_n_s_rearrangement_flag, __pyx_n_s_E_flag, __pyx_n_s_header_flag, __pyx_n_s_junction_flag, __pyx_n_s_cdr3_flag, __pyx_n_s_summary_flag, __pyx_n_s_line, __pyx_n_s_header, __pyx_n_s_Umi, __pyx_n_s_tmp_d, __pyx_n_s_Key, __pyx_n_s_tmpk, __pyx_n_s_tmpv, __pyx_n_s_Keys, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_e, __pyx_n_s_i); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(21, __pyx_n_s_fin, __pyx_n_s_d, __pyx_n_s_column_names, __pyx_n_s_rearrangement_flag, __pyx_n_s_E_flag, __pyx_n_s_header_flag, __pyx_n_s_junction_flag, __pyx_n_s_cdr3_flag, __pyx_n_s_summary_flag, __pyx_n_s_line, __pyx_n_s_header, __pyx_n_s_Umi, __pyx_n_s_tmp_d, __pyx_n_s_Key, __pyx_n_s_tmpk, __pyx_n_s_tmpv, __pyx_n_s_Keys, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_e, __pyx_n_s_i); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 22, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_module1_pyx, __pyx_n_s_igblast_parse, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(1, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_compiled_module1_pyx, __pyx_n_s_igblast_parse, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -6104,7 +6047,7 @@ if (!__Pyx_RefNanny) {
   /* "module1.pyx":47
  * 
  * 
- * def igblast_parse(fin,out_prefix):             # <<<<<<<<<<<<<<
+ * def igblast_parse(fin):             # <<<<<<<<<<<<<<
  *     # results table
  *     cdef dict d
  */
