@@ -25,4 +25,4 @@ for n,i in enumerate(sys.argv):
 
 
 d = igblast_parse(fin, out_prefix)
-pd.DataFrame(d).T.to_csv(path_or_buf=out_prefix + '.csv', index_label="umi"
+pd.DataFrame(d).T.to_csv(path_or_buf=out_prefix + '.csv', index_label="umi")

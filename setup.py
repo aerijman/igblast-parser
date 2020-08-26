@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 from Cython.Build import cythonize
 
 with open("README.md","r") as fh:
@@ -15,7 +15,7 @@ else:
 
 setup(
 	name = "igblast_parser",
-	version = 0.0.1,
+	version = "0.0.1",
 	author = "Ariel Erijman & Brd Langhorst",
 	author_email = "aerijman@fredhutch.org",
 	description = "Parser of Igblast results into a csv file",
@@ -29,6 +29,7 @@ setup(
 		"Operating system :: OS Independent",
 	],
 	python_requires='>=3.6',
+	install_requires = ['pandas', 'numpy'],
 	
 	ext_modules = ext_modules,
 	cmdclass = cmdclass,
