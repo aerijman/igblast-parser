@@ -9,8 +9,8 @@ This simple script parses igblast output into a csv formatted table, easy to und
 
 ### Installation
 
-pip install igblast-parser
-conda install -c bioconda igblast-parser
+pip install igblast-parser  
+conda install -c bioconda igblast-parser   
 
 python setup.py install
 
