@@ -22,7 +22,7 @@ else:
 setup(
 	name = "igblast_parser",
 	version = "0.0.3",
-	author = "Ariel Erijman & Brd Langhorst",
+	author = "Ariel Erijman & Brad Langhorst",
 	author_email = "aerijman@fredhutch.org",
 	description = "Parser of Igblast results into a csv file",
 	long_description = long_description,
