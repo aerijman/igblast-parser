@@ -16,13 +16,19 @@ if len({'-help','--help'}.intersection(set(sys.argv)))>0:
 
 # initialize prefix filename or get from user 
 out_prefix = 'igblast_output'
+tabular = False
 fin = sys.stdin
 for n,i in enumerate(sys.argv):
     if i in ['--out', '-out']:
         out_prefix = sys.argv[n+1]
     if i in ['--in', '-in']:
         fin = open(sys.argv[n+1])
-
+    if i in ['--tabular', '-tab']:
+        tabular = True
 
 d = igblast_parse(fin)
-pd.DataFrame(d).T.to_csv(path_or_buf=out_prefix + '.csv', index_label="umi")
+
+if tabular:
+    pd.DataFrame(d).T.to_csv(path_or_buf=out_prefix + '.tsv', index_label="umi", sep="\t")
+else:
+    pd.DataFrame(d).T.to_csv(path_or_buf=out_prefix + '.csv', index_label="umi")
