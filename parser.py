@@ -168,8 +168,13 @@ def main():
 
 
 	if len({'-help','--help'}.intersection(set(sys.argv)))>0:
-		sys.exit('''\n igblast_output | python <this script> --out <out_filename_prefix>\n
-						python <this script --in <igblast_output> --out <out_filename_prefix>''')
+		sys.exit('''\n 
+						igblast_output | python <this script> <options> --out <out_filename_prefix>\n
+						python <this script <options> --in <igblast_output> --out <out_filename_prefix>\n
+						options: --seq-len (if the aligned sequence is longer than N nucleotides, trim it to "NNN"\n
+						and let the user know about that in the std err.)\n
+				 ''')
+	seq_len_filter = 1000
 
 	# initialize prefix filename or get from user 
 	out_prefix = 'igblast_output'
@@ -179,9 +184,18 @@ def main():
 			out_prefix = sys.argv[n+1]
 		if i in ['--in', '-in']:
 			fin = open(sys.argv[n+1])
-
+		if i in ['--seq-len', 'filter-len']:
+			seq_len_filter = int(sys.argv[n+1])
 
 	d = igblast_parse(fin)
+
+	# if contignt is too long, apply the filter. Otherwise, galaxy will throw and error
+	for umi in d.keys(): 
+		seq = d[umi]['contignt']
+		if len(seq) > seq_len_filter: 
+			d[umi]['contignt'] = 'NNN' 
+			sys.stderr.write('sequence starting with {} is too long ({} bp) it will be replaced in the output with NNN\n'.format(\
+							 seq[:20], len(seq)))
 
 	pd.DataFrame(d).T.to_csv(path_or_buf=out_prefix + '.csv', index_label="umi")
 
