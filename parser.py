@@ -4,11 +4,10 @@ import sys,re
 
 
 # Will have to define cdr3 and contignt as def *char (perhaps str)
-cpdef int check_flanking_cdr3(str cdr3, str contignt):
+def check_flanking_cdr3(cdr3, contignt):
     '''
     function check flanking conserved C and F(W)
     '''
-    cdef int start, end
     try:
         start = re.search(cdr3, contignt).start()-3
         end   = re.search(cdr3, contignt).end()
@@ -22,21 +21,16 @@ cpdef int check_flanking_cdr3(str cdr3, str contignt):
     return False
 
 
-cpdef dict parse_header(str line):
+def parse_header(line):
     '''
     Functon parses line where e.g. "Length=437"
     is returned as a dict {'Length':'437'}
     line should NOT include "\n"
     '''
-    cdef list pos
-    cdef int lpos
-    cdef dict results #,umi
 
     pos = [0] + [i.start()+1 for i in re.finditer("[|=]", line)]
     lpos = len(pos)-1
 
-    cdef list eqs
-    cdef int idx # Will use this in eqs in the next line
     eqs = [line[pos[idx]:pos[idx+1]-1] for idx in range(0,lpos)] + [line[pos[lpos]:]]
     results = {eqs[n].lower():eqs[n+1] for n in range(1,len(eqs)-1,2)}
     results['UMI'] = eqs[0][1:]
@@ -46,11 +40,9 @@ cpdef dict parse_header(str line):
 
 def igblast_parse(fin):
     # results table
-    cdef dict d
     d={}
 
     # define all column names THAT ARE NOT IN THE HEADER!
-    cdef list column_names
     column_names = ['Chain type', 'D region', 'D-J junction','E_value', 'J start', 'Productive', 'Strand',
                     'Top D gene match', 'Top J gene match', 'Top V gene match', 'V end', 'V-D junction',
                     'V-J frame', 'V-J junction', 'cdr3', 'cdr3aa', 'cdr3end', 'cdr3start','stop codon', 
@@ -58,13 +50,7 @@ def igblast_parse(fin):
     column_names = [i.replace(" ","_").replace("-","_").lower() for i in column_names]
 
     # This is needed to include extra information in separate lines
-    cdef int rearrangement_flag, E_flag, header_flag, junction_flag, cdr3_flag, summary_flag
     rearrangement_flag, E_flag, header_flag, junction_flag, cdr3_flag, summary_flag = [False]*6
-
-    # read file and fill table
-    cdef str line, header, Umi
-    cdef dict tmp_d
-    cdef list Key
     
     for line in fin:
         # skip empty rows
@@ -143,7 +129,7 @@ def igblast_parse(fin):
 
             # knowing the flags, proceed with updating the values in d[UMI]
             elif re.search('Query_', line):
-                d[Umi]['contignt'] +=  re.search('[ACTG]{1,}',line).group()
+                d[Umi]['contignt'] +=  re.search('[ACTGRYSWKMBDHVN]{1,}',line).group()
                 continue
 
             if E_flag:
@@ -174,3 +160,31 @@ def igblast_parse(fin):
     fin.close()
     
     return d
+
+
+def main():
+	from signal import signal, SIGPIPE, SIG_DFL
+	signal(SIGPIPE,SIG_DFL) 
+
+
+	if len({'-help','--help'}.intersection(set(sys.argv)))>0:
+		sys.exit('''\n igblast_output | python <this script> --out <out_filename_prefix>\n
+						python <this script --in <igblast_output> --out <out_filename_prefix>''')
+
+	# initialize prefix filename or get from user 
+	out_prefix = 'igblast_output'
+	fin = sys.stdin
+	for n,i in enumerate(sys.argv):
+		if i in ['--out', '-out']:
+			out_prefix = sys.argv[n+1]
+		if i in ['--in', '-in']:
+			fin = open(sys.argv[n+1])
+
+
+	d = igblast_parse(fin)
+
+	pd.DataFrame(d).T.to_csv(path_or_buf=out_prefix + '.csv', index_label="umi")
+
+
+if __name__ == '__main__': 
+	main()
