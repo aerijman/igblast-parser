@@ -68,6 +68,9 @@ def igblast_parse(fin):
                     else:
                         d[Umi]['conserved_cfw'] = check_flanking_cdr3(d[Umi]['cdr3'], d[Umi]['contignt'])
 
+
+                print(Umi, "*************************")
+
        # this finishes the header including the length
             elif line[:6] == "Length":
                 header += '|' + line.strip()
